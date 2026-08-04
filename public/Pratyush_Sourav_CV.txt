@@ -1,0 +1,11 @@
+Sriman Pratyush Sourav
+
+Graduated from NIT Rourkela
+
+Expertise:
+- React
+- Tailwind CSS
+- Backend Development
+- AI / ML / GenAI
+
+Replace this file with your actual CV when ready.
