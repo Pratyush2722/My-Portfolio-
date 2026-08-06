@@ -1,265 +1,84 @@
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  CheckCircle,
-  AlertCircle,
-} from "lucide-react";
-import { Button } from "@/components/Button";
-import { useState } from "react";
-import emailjs from "@emailjs/browser";
+import { Github, Linkedin, Mail, Send } from "lucide-react";
 
-const contactInfo = [
+const contactLinks = [
   {
-    icon: Mail,
     label: "Email",
     value: "souravpratyush1@gmail.com",
     href: "mailto:souravpratyush1@gmail.com",
+    icon: Mail,
   },
   {
-    icon: Phone,
-    label: "Phone",
-    value: "+91 82608 20128",
-    href: "tel:+918260820128",
+    label: "LinkedIn",
+    value: "/in/pratyush-sourav",
+    href: "https://www.linkedin.com/in/pratyush-sourav/",
+    icon: Linkedin,
   },
   {
-    icon: MapPin,
-    label: "Location",
-    value: "Rourkela, Odisha",
-    href: "#",
+    label: "GitHub",
+    value: "@Pratyush2722",
+    href: "https://github.com/Pratyush2722/",
+    icon: Github,
+  },
+  {
+    label: "LeetCode",
+    value: "@Praty2722",
+    href: "https://leetcode.com/u/Praty2722/",
+    icon: Send,
   },
 ];
 
 export const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({
-    type: null, // 'success' or 'error'
-    message: "",
-  });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    setIsLoading(true);
-    setSubmitStatus({ type: null, message: "" });
-    try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-      if (!serviceId || !templateId || !publicKey) {
-        const mailto = `mailto:souravpratyush1@gmail.com?subject=${encodeURIComponent(
-          `Portfolio message from ${formData.name}`
-        )}&body=${encodeURIComponent(
-          `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
-        )}`;
-
-        window.location.href = mailto;
-        setSubmitStatus({
-          type: "success",
-          message:
-            "Email client opened. Please send your message from there to reach me.",
-        });
-        setFormData({ name: "", email: "", message: "" });
-        setIsLoading(false);
-        return;
-      }
-
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        },
-        publicKey
-      );
-
-      setSubmitStatus({
-        type: "success",
-        message: "Message sent successfully! I'll get back to you soon.",
-      });
-      setFormData({ name: "", email: "", message: "" });
-    } catch (err) {
-      console.error("EmailJS error:", err);
-      setSubmitStatus({
-        type: "error",
-        message:
-          err?.text ||
-          "Failed to send message. Please try again later or contact me directly via email.",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
-            Get In Touch
+    <section id="contact" className="relative overflow-hidden py-24 sm:py-28">
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <span className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-300">
+            Contact
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            Let's build{" "}
-            <span className="font-serif italic font-normal text-white">
-              something great.
-            </span>
+          <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
+            Let’s talk about building something meaningful.
           </h2>
-          <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            Have a project in mind? I'd love to hear about it. Send me a message
-            and let's discuss how we can work together.
-          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <div className="glass p-8 rounded-3xl border border-primary/30 animate-fade-in animation-delay-300">
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  placeholder="Your name..."
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  placeholder="your@email.com"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  rows={5}
-                  required
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  placeholder="Your message..."
-                  className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
-                />
-              </div>
-
-              <Button
-                className="w-full"
-                type="submit"
-                size="lg"
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <>Sending...</>
-                ) : (
-                  <>
-                    Send Message
-                    <Send className="w-5 h-5" />
-                  </>
-                )}
-              </Button>
-
-              {submitStatus.type && (
-                <div
-                  className={`flex items-center gap-3
-                     p-4 rounded-xl ${
-                       submitStatus.type === "success"
-                         ? "bg-green-500/10 border border-green-500/20 text-green-400"
-                         : "bg-red-500/10 border border-red-500/20 text-red-400"
-                     }`}
-                >
-                  {submitStatus.type === "success" ? (
-                    <CheckCircle className="w-5 h-5 flex-shrink-0" />
-                  ) : (
-                    <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                  )}
-                  <p className="text-sm">{submitStatus.message}</p>
-                </div>
-              )}
-            </form>
+        <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="animated-card-shell glass rounded-3xl border border-white/10 p-8">
+            <p className="text-slate-300">
+              Open to full-time Software Engineer opportunities and collaborative projects.
+            </p>
+            <div className="mt-6 space-y-3">
+              {contactLinks.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition-all hover:border-cyan-400/30 hover:bg-cyan-400/10"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="rounded-xl bg-violet-500/15 p-2 text-cyan-300">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-slate-400">{item.label}</div>
+                        <div className="text-sm font-medium text-white">{item.value}</div>
+                      </div>
+                    </div>
+                    <Send className="h-4 w-4 text-slate-400" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Contact Info */}
-          <div className="space-y-6 animate-fade-in animation-delay-400">
-            <div className="glass rounded-3xl p-8">
-              <h3 className="text-xl font-semibold mb-6">
-                Contact Information
-              </h3>
-              <div className="space-y-4">
-                {contactInfo.map((item, i) => (
-                  <a
-                    key={i}
-                    href={item.href}
-                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-surface transition-colors group"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <item.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-muted-foreground">
-                        {item.label}
-                      </div>
-                      <div className="font-medium">{item.value}</div>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Availability Card */}
-            <div className="glass rounded-3xl p-8 border border-primary/30">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                <span className="font-medium">Currently Available</span>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                I'm open to internships and entry-level opportunities in AI,
-                backend, and full-stack development. Let's connect to build
-                something great.
-              </p>
+          <div className="animated-card-shell glass rounded-3xl border border-white/10 p-8">
+            <h3 className="text-xl font-semibold text-white">Available for opportunities</h3>
+            <p className="mt-4 text-sm leading-7 text-slate-400">
+              I’m currently interested in roles involving full-stack development, AI product engineering, and collaborative product delivery. If you’re hiring or building something ambitious, I’d love to connect.
+            </p>
+            <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-5 text-sm text-cyan-100">
+              Preferred locations: Remote / Hybrid • India-based opportunities welcome
             </div>
           </div>
         </div>

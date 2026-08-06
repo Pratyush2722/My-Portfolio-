@@ -1,60 +1,29 @@
-import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/Pratyush2722/", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/pratyush-sourav/", label: "LinkedIn" },
 ];
 
-const footerLinks = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
-];
-
 export const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="py-12 border-t border-border">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Logo & Copyright */}
-          <div className="text-center md:text-left">
-            <a href="#" className="text-xl font-bold tracking-tight">
-              SPS<span className="text-primary">.</span>
-            </a>
-            <p className="text-sm text-muted-foreground mt-2">
-              © {currentYear} Sriman Pratyush Sourav. All rights reserved.
-            </p>
-          </div>
-
-          {/* Links */}
-          <nav className="flex flex-wrap justify-center gap-6">
-            {footerLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => (
+    <footer className="border-t border-white/10 py-10">
+      <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-6 text-center text-sm text-slate-400 md:flex-row md:text-left">
+        <p>Built with React, Tailwind CSS, and a lot of coffee ☕</p>
+        <div className="flex items-center gap-4">
+          {socialLinks.map((social) => {
+            const Icon = social.icon;
+            return (
               <a
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
-                className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
+                className="rounded-full border border-white/10 bg-white/5 p-2 transition-all hover:border-cyan-400/30 hover:text-cyan-200"
               >
-                <social.icon className="w-5 h-5" />
+                <Icon className="h-4 w-4" />
               </a>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
     </footer>

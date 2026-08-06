@@ -6,7 +6,7 @@ export const Button = ({
   ...props
 }) => {
   const baseClasses =
-    "relative inline-flex whitespace-nowrap overflow-hidden rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/25";
+    "relative inline-flex whitespace-nowrap overflow-hidden rounded-full font-medium text-white transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 bg-gradient-to-r from-violet-600 via-cyan-500 to-pink-500 shadow-lg shadow-cyan-500/20 hover:shadow-pink-500/25";
 
   const sizeClasses = {
     sm: "px-4 py-2 text-sm",

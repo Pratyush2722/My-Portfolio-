@@ -1,204 +1,101 @@
 import { Button } from "@/components/Button";
-import {
-  ArrowRight,
-  ChevronDown,
-  Github,
-  Linkedin,
-  Code2,
-  Activity,
-  Download,
-} from "lucide-react";
+import { ArrowRight, ChevronDown, Github, Linkedin, Download, Sparkles } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
-const skills = [
-  "C++",
-  "C",
-  "Python",
-  "JavaScript",
-  "HTML/CSS",
-  "React.js",
-  "Next.js",
-  "Node.js",
-  "Express.js",
-  "FastAPI",
-  "MongoDB",
-  "LangChain",
-  "FAISS",
-  "RAG",
-  "LLM Inference",
-  "REST APIs",
-  "Git",
-  "Docker",
-  "Ubuntu",
-  "Bash",
-  "Postman",
-  "VS Code",
-];
+const quickPills = ["NIT Rourkela", "300+ DSA Problems", "Fractal Analytics Intern"];
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Bg */}
+    <section id="top" className="relative flex min-h-screen items-center overflow-hidden py-24 sm:py-28">
       <div className="absolute inset-0">
-        <img
-          src="/hero-bg.jpg"
-          alt="Hero image"
-          className="w-full h-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.24),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.2),transparent_35%)]" />
       </div>
 
-      {/* Green Dots */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
-          <div
-            className="absolute w-1.5 h-1.5 rounded-full opacity-60"
-            style={{
-              backgroundColor: "#20B2A6",
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `slow-drift ${
-                15 + Math.random() * 20
-              }s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Content */}
-      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
+      <div className="container relative z-10 mx-auto px-6 pb-20 pt-28">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="space-y-8">
             <div className="animate-fade-in">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Software Engineer
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-100 shadow-lg shadow-cyan-500/10 backdrop-blur">
+                <Sparkles className="h-4 w-4" />
+                Software Developer • Full-Stack • AI/LLM Enthusiast
               </span>
             </div>
 
-            {/* Headline */}
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                I am Sriman Pratyush Sourav,
-                <br />
-                graduated from NIT Rourkela.
+              <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+                Pratyush Sourav
               </h1>
-              <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                I have expertise in React, Tailwind, backend development, and
-                AI/ML/GenAI technologies.
+              <p className="max-w-2xl text-lg leading-8 text-slate-300">
+                Final-year B.Tech student at NIT Rourkela with experience in full-stack development, GenAI applications, and scalable web systems.
               </p>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <Button href="#contact" size="lg">
-                Contact Me <ArrowRight className="w-5 h-5" />
+            <div className="flex flex-wrap gap-3">
+              {quickPills.map((pill) => (
+                <span
+                  key={pill}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200"
+                >
+                  {pill}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-4">
+              <Button href="/Sriman%20Pratyush%20CV.pdf" size="lg">
+                View Resume <ArrowRight className="h-5 w-5" />
               </Button>
-              <AnimatedBorderButton href="/Sriman%20Pratyush%20CV.pdf" download="Sriman_Prathyush_CV.pdf">
-                <Download className="w-5 h-5" />
-                Download CV
+              <AnimatedBorderButton href="https://github.com/Pratyush2722/" target="_blank" rel="noreferrer">
+                <Github className="h-5 w-5" />
+                View GitHub
               </AnimatedBorderButton>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
-              <span className="text-sm text-muted-foreground">Follow me: </span>
+            <div className="flex flex-wrap items-center gap-4">
+              <span className="text-sm text-slate-400">Connect:</span>
               {[
                 { icon: Github, href: "https://github.com/Pratyush2722/", title: "GitHub" },
                 { icon: Linkedin, href: "https://www.linkedin.com/in/pratyush-sourav/", title: "LinkedIn" },
-                { icon: Code2, href: "https://www.codechef.com/users/pratyush8226", title: "CodeChef" },
-                { icon: Activity, href: "https://leetcode.com/u/Praty2722/", title: "LeetCode" },
-              ].map((social, idx) => (
-                <a
-                  key={idx}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={social.title}
-                  className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
-                >
-                  {<social.icon className="w-5 h-5" />}
-                </a>
-              ))}
+              ].map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.title}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={social.title}
+                    className="rounded-full border border-white/10 bg-white/5 p-2 text-slate-200 transition-all duration-300 hover:border-cyan-400/40 hover:text-cyan-200"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                );
+              })}
             </div>
           </div>
-          {/* Right Column - Profile Image */}
-          <div className="relative animate-fade-in animation-delay-300">
-            {/* Profile Image */}
-            <div className="relative max-w-md mx-auto">
-              <div
-                className="absolute inset-0 
-              rounded-3xl bg-gradient-to-br 
-              from-primary/30 via-transparent 
-              to-primary/10 blur-2xl animate-pulse"
-              />
-              <div className="relative glass rounded-3xl p-2 glow-border">
+
+          <div className="relative flex justify-center animate-fade-in animation-delay-300">
+            <div className="relative mx-auto max-w-[18rem] rounded-[2rem] border border-white/10 bg-slate-900/50 p-2 shadow-[0_30px_90px_rgba(2,6,23,0.45)] backdrop-blur-xl sm:max-w-[20rem]">
+              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-violet-500/20 via-transparent to-cyan-500/20" />
+              <div className="relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-slate-950/70">
                 <img
                   src="/profile-photo.jpg"
-                  alt="Sriman Pratyush Sourav"
-                  className="w-full aspect-[4/5] object-cover object-left rounded-2xl"
+                  alt="Pratyush Sourav"
+                  className="h-[320px] w-full object-contain bg-slate-950 sm:h-[380px]"
                 />
-
-                {/* Floating Badge */}
-                <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-sm font-medium">
-                      Available for work
-                    </span>
-                  </div>
-                </div>
-                {/* Stats Badge */}
-                <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animation-delay-500">
-                  <div className="text-2xl font-bold text-primary">0-1</div>
-                  <div className="text-xs text-muted-foreground">
-                    Years Exp. / Fresher
-                  </div>
-                </div>
+              </div>
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-4 py-3 text-center text-sm text-cyan-100 backdrop-blur">
+                Available for full-time opportunities
               </div>
             </div>
           </div>
         </div>
-
-        {/* Skills Section */}
-        <div className="mt-20 animate-fade-in animation-delay-600">
-          <p className="text-sm text-muted-foreground mb-6 text-center">
-            Technologies I work with
-          </p>
-          <div className="relative overflow-hidden">
-            <div
-              className="absolute left-0 top-0 bottom-0 w-32
-             bg-gradient-to-r from-background to-transparent z-10"
-            />
-            <div
-              className="absolute right-0 top-0 bottom-0 w-32
-             bg-gradient-to-l from-background to-transparent z-10"
-            />
-            <div className="flex animate-marquee">
-              {[...skills, ...skills].map((skill, idx) => (
-                <div key={idx} className="flex-shrink-0 px-8 py-4">
-                  <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
-                    {skill}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
 
-      <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 
-      animate-fade-in animation-delay-800"
-      >
-        <a
-          href="#about"
-          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
-        >
-          <span className="text-xs uppercase tracking-wider">Scroll</span>
-          <ChevronDown className="w-6 h-6 animate-bounce" />
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-fade-in animation-delay-800">
+        <a href="#about" className="flex flex-col items-center gap-2 text-slate-400 transition-colors hover:text-cyan-300">
+          <span className="text-xs uppercase tracking-[0.35em]">Scroll</span>
+          <ChevronDown className="h-6 w-6 animate-bounce" />
         </a>
       </div>
     </section>

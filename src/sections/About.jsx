@@ -3,95 +3,72 @@ import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
 const highlights = [
   {
     icon: Code2,
-    title: "Clean Code",
-    description:
-      "Writing maintainable, scalable code that stands the test of time.",
+    title: "Full-Stack Delivery",
+    description: "Building polished frontends and dependable backends that ship with confidence.",
   },
   {
     icon: Rocket,
-    title: "Performance",
-    description:
-      "Optimizing for speed and delivering lightning-fast user experiences.",
+    title: "GenAI Systems",
+    description: "Designing AI workflows, LLM integrations, and prototypes with real product value.",
   },
   {
     icon: Users,
-    title: "Collaboration",
-    description: "Working closely with teams to bring ideas to life.",
+    title: "Team Collaboration",
+    description: "Comfortable working across product, engineering, and fast-moving startup environments.",
   },
   {
     icon: Lightbulb,
-    title: "Innovation",
-    description:
-      "Staying ahead with the latest technologies and best practices.",
+    title: "Problem Solving",
+    description: "Combining DSA rigor with practical engineering to solve complex product challenges.",
   },
 ];
 
 export const About = () => {
   return (
-    <section id="about" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column */}
+    <section id="about" className="relative overflow-hidden py-24 sm:py-28">
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="space-y-8">
             <div className="animate-fade-in">
-              <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase">
+              <span className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-300">
                 About Me
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight animate-fade-in animation-delay-100 text-secondary-foreground">
-              Building the future,
-              <span className="font-serif italic font-normal text-white">
-                {" "}
-                one component at a time.
-              </span>
+            <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">
+              I build products that feel modern, fast, and thoughtful.
             </h2>
 
-            <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
+            <div className="space-y-4 text-slate-300">
               <p>
-                I'm Sriman Pratyush Sourav, a B.Tech student in Electrical
-                Engineering at NIT Rourkela with hands-on experience in AI,
-                backend development, and modern web technologies.
+                I’m Pratyush Sourav, a final-year B.Tech student at NIT Rourkela focused on crafting scalable web applications and GenAI experiences.
               </p>
               <p>
-                I build production-ready applications using React, Tailwind,
-                Node.js, FastAPI, and LangChain. I focus on creating scalable
-                solutions that bridge AI, backend services, and user-friendly
-                interfaces.
+                My work spans React, Node.js, Next.js, and AI tooling such as LangChain, OpenAI, Ollama, and Groq — with an emphasis on clean architecture and strong UX.
               </p>
               <p>
-                My foundation in data structures, algorithms, operating systems,
-                databases, networks, and object-oriented programming helps me
-                deliver reliable software and learn new systems quickly.
-              </p>
-            </div>
-
-            <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
-              <p className="text-lg font-medium italic text-foreground">
-                "My mission is to create digital experiences that are not just
-                functional, but truly delightful — products that users love to
-                use and developers love to maintain."
+                I enjoy turning ideas into practical software, whether that means shipping a full-stack platform or turning an AI prototype into a usable workflow.
               </p>
             </div>
           </div>
 
-          {/* Right Column - Hilights */}
-          <div className="grid sm:grid-cols-2 gap-6">
-            {highlights.map((item, idx) => (
-              <div
-                key={idx}
-                className="glass p-6 rounded-2xl animate-fade-in"
-                style={{ animationDelay: `${(idx + 1) * 100}ms` }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 hover:bg-primary/20">
-                  <item.icon className="w-6 h-6 text-primary" />
+          <div className="grid gap-6 sm:grid-cols-2">
+            {highlights.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="animated-card-shell glass rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1"
+                  style={{ animationDelay: `${(idx + 1) * 100}ms` }}
+                >
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/15 text-cyan-300">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mb-2 text-lg font-semibold text-white">{item.title}</h3>
+                  <p className="text-sm text-slate-300">{item.description}</p>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
