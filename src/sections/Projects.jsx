@@ -8,7 +8,7 @@ const projects = [
       "AI-powered multilingual translator with speech, PDF, and text translation.",
     image: "/projects/project2.png",
     tags: ["React", "Node.js", "Groq LLM", "MongoDB"],
-    live: "https://linguagenie-x.vercel.app/",
+    live: "https://vercel.com/pratyush-souravs-projects/lingua-genie-x",
     github: "https://github.com/Pratyush2722/LinguaGenie-X",
   },
   {
