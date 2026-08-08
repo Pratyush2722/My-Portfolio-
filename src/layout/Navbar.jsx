@@ -42,8 +42,12 @@ export const Navbar = () => {
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-6">
-        <a href="#top" className="text-xl font-bold tracking-tight text-white hover:text-cyan-300">
-          PS<span className="text-cyan-300">.</span>
+        <a href="#top" className="flex items-center">
+          <img
+            src="/logo.png"
+            alt="SPS Logo"
+            className="h-10 w-10 rounded-full object-cover transition-transform duration-300 hover:scale-105"
+          />
         </a>
 
         <div className="hidden md:flex items-center gap-1">

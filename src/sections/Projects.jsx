@@ -3,23 +3,25 @@ import { ArrowUpRight, Github, ChevronDown, ChevronUp } from "lucide-react";
 
 const projects = [
   {
+    title: "ClarityMeet",
+    description:
+      "AI-powered meeting intelligence platform that transforms raw transcripts into professional meeting minutes, decision logs, action items, risks, executive summaries, and presentation-ready content.",
+    image: "/projects/claritymeet.png",
+    tags: ["Next.js", "TypeScript", "AI", "PostgreSQL"],
+    live: "https://clarity-meet-ji8dbsuea-pratyush-souravs-projects.vercel.app/",
+    github: "https://github.com/Pratyush2722/ClarityMeet",
+  },
+
+  {
     title: "LinguaGenie X",
     description:
-      "AI-powered multilingual translator with speech, PDF, and text translation.",
+      "AI-powered multilingual translator supporting text, speech, and PDF translation with natural, context-aware results using LLMs across multiple languages and dialects.",
     image: "/projects/project2.png",
     tags: ["React", "Node.js", "Groq LLM", "MongoDB"],
-    live: "https://vercel.com/pratyush-souravs-projects/lingua-genie-x",
+    live: "https://lingua-genie-x.vercel.app/",
     github: "https://github.com/Pratyush2722/LinguaGenie-X",
   },
-  {
-    title: "MemZero",
-    description:
-      "Memory-aware chatbot using local LLMs and vector search.",
-    image: "/projects/project1.png",
-    tags: ["LangChain", "Ollama", "FAISS", "Node.js"],
-    live: "https://memzero.vercel.app/",
-    github: "https://github.com/Pratyush2722/MemZero-Memory-Aware-Chatbot",
-  },
+
   {
     title: "AstraVault",
     description:
@@ -29,6 +31,7 @@ const projects = [
     live: "https://library-management-3f9o.vercel.app/dashboard",
     github: "https://github.com/Pratyush2722/Library_Management",
   },
+
   {
     title: "Developer Portfolio",
     description:
@@ -37,6 +40,16 @@ const projects = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Framer Motion"],
     live: "https://pratyushportfolio-8226.vercel.app/",
     github: "https://github.com/Pratyush2722/My-Portfolio-",
+  },
+
+  {
+    title: "MemZero",
+    description:
+      "A memory-aware AI chatbot designed to maintain conversational context using local LLMs and vector-based memory retrieval.",
+    image: "/projects/project1.png",
+    tags: ["LangChain", "Ollama", "FAISS", "Node.js"],
+    live: "https://memzero.vercel.app/",
+    github: "https://github.com/Pratyush2722/MemZero-Memory-Aware-Chatbot",
   },
 ];
 
